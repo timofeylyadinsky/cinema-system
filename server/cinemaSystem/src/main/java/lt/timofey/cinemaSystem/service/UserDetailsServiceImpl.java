@@ -1,5 +1,6 @@
 package lt.timofey.cinemaSystem.service;
 
+import jakarta.transaction.Transactional;
 import lt.timofey.cinemaSystem.entity.User;
 import lt.timofey.cinemaSystem.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         Optional<User> user = userRepo.findUserByUsername(s);
         if (user.isEmpty()) throw new UsernameNotFoundException(user +"user not found");

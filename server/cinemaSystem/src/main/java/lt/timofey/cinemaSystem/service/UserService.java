@@ -1,12 +1,12 @@
 package lt.timofey.cinemaSystem.service;
 
 import lt.timofey.cinemaSystem.entity.User;
+import lt.timofey.cinemaSystem.exception.UserExistException;
 import lt.timofey.cinemaSystem.payload.SignupRequest;
 import lt.timofey.cinemaSystem.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +34,7 @@ public class UserService {
             return userRepository.save(user);
         } catch (Exception e) {
             LOG.error("Error during registration. {}", e.getMessage());
-            throw new RuntimeException("The user " + user.getUsername() + " already exist. Please check credentials");
+            throw new UserExistException("The user " + user.getUsername() + " already exist. Please check credentials");
         }
     }
 }
