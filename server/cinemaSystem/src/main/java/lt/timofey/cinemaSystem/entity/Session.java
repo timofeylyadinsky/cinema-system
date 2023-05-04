@@ -3,6 +3,7 @@ package lt.timofey.cinemaSystem.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @Data
@@ -20,4 +21,7 @@ public class Session {
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Hall hall;
+
+    @Column(nullable = false)
+    private LocalDate sessionDate;
 }
