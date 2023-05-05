@@ -40,11 +40,15 @@ public class SecurityConfig {
         http
                 .cors().and().csrf().disable()
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/", "/home","/api/auth/**").permitAll()
+                        .requestMatchers("/", "/home","/auth/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
-                        .loginPage("/login")
+                        .loginPage("/auth/signin")
+                        .permitAll()
+                        .loginProcessingUrl("/perform_login")
+                        .defaultSuccessUrl("/", true)
+                        .failureUrl("/auth/signin?error")
                         .permitAll()
                 )
                 .logout((logout) -> logout.permitAll())

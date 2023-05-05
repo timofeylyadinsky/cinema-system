@@ -14,13 +14,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/api/auth")
+@Controller
+@RequestMapping("/auth")
 public class AuthController {
 
     @Autowired
@@ -32,15 +29,28 @@ public class AuthController {
     private ResponseErrorValidation responseErrorValidation;
 
 
-    @PostMapping("/signup")
+    /*@PostMapping("/signup")
     public ResponseEntity<Object> registerUser(@Valid @RequestBody SignupRequest signupRequest, BindingResult bindingResult) {
         ResponseEntity<Object> errors = responseErrorValidation.mapValidationService(bindingResult);
         if (!ObjectUtils.isEmpty(errors)) return errors;
 
         userService.createUser(signupRequest);
         return ResponseEntity.ok("User registered successfully!");
+    }*/
+
+    @GetMapping("/signup")
+    public String registrationPage(@ModelAttribute("person") SignupRequest signupRequest) {
+        return "auth/signup";
     }
 
+    @PostMapping("/signup")
+    public String registerUser(@Valid @ModelAttribute("person") SignupRequest signupRequest, BindingResult bindingResult) {
+        /*ResponseEntity<Object> errors = responseErrorValidation.mapValidationService(bindingResult);
+        if (!ObjectUtils.isEmpty(errors)) return errors;*/
+        if (bindingResult.hasErrors()) return "auth/signup";
+        userService.createUser(signupRequest);
+        return "redirect:/home";
+    }
 
     @PostMapping("/signin")
     public ResponseEntity<Object> authenticateUser(@Valid @RequestBody LoginRequest loginRequest, BindingResult bindingResult) {
@@ -53,6 +63,12 @@ public class AuthController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         return ResponseEntity.ok("login - " + loginRequest.getUsername());
     }
+
+    @GetMapping("/signin")
+    public String authenticateUser() {
+        return "auth/signin";
+    }
+
 
 
 }

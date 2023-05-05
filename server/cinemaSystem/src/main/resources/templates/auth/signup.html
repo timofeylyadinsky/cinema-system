@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>form</h1>
+<form th:action="@{/auth/signup}" th:object="${person}" th:method="POST">
+
+
+    <div>
+        <label for="email">email</label>
+        <input type="text" th:field="*{email}" id="email"/>
+        <p th:each="error : ${#fields.errors('email')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <label for="username">first</label>
+    <input type="text" th:field="*{username}" id="username"/>
+    <p th:each="error: ${#fields.errors('username')}"-->
+          th:text="${error}">Validation error</p>
+    <div>
+        <label for="password">password</label>
+        <input type="password" th:field="*{password}" id="password"/>
+        <p th:each="error : ${#fields.errors('password')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label for="confirm">confirm</label>
+        <input id="confirm" type="password" th:field="*{confirmPassword}"/>
+    </div>
+    <button type="submit">submit</button>
+</form>
+</body>
+</html>
