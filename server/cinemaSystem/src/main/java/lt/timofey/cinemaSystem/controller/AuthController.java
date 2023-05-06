@@ -37,7 +37,14 @@ public class AuthController {
         userService.createUser(signupRequest);
         return ResponseEntity.ok("User registered successfully!");
     }*/
+    @PostMapping("/api/signup")
+    public ResponseEntity<Object> registerUserByApi(@Valid @RequestBody SignupRequest signupRequest, BindingResult bindingResult) {
+        ResponseEntity<Object> errors = responseErrorValidation.mapValidationService(bindingResult);
+        if (!ObjectUtils.isEmpty(errors)) return errors;
 
+        userService.createUser(signupRequest);
+        return ResponseEntity.ok("User registered successfully!");
+    }
     @GetMapping("/signup")
     public String registrationPage(@ModelAttribute("person") SignupRequest signupRequest) {
         return "auth/signup";

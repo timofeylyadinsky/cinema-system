@@ -15,4 +15,11 @@ public class Hall {
 
     @Column(nullable = false)
     private int columnsOfSeat;
+
+    public Hall(int rowsOfSeat, int columnsOfSeat) {
+        this.rowsOfSeat = rowsOfSeat;
+        this.columnsOfSeat = columnsOfSeat;
+    }
+
+    public Hall() {}
 }

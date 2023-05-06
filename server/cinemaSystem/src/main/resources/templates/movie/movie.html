@@ -10,7 +10,7 @@
   </div>
   <div th:if="${!movie.isEmpty()}">
     <div th:each="mm : ${movie}">
-      <p th:text="${mm.getName()}">text</p>
+        <a th:href="@{/movie/{id}(id=${mm.getId()})}"><p th:text="${mm.getName()}">text</p></a>
     </div>
   </div>
 

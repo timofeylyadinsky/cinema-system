@@ -2,9 +2,11 @@ package lt.timofey.cinemaSystem.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -18,4 +20,7 @@ public class Ticket {
 
     @Column(nullable = false)
     private Integer price;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
 }

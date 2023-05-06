@@ -2,9 +2,11 @@ package lt.timofey.cinemaSystem.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -15,4 +17,10 @@ public class Seat {
 
     @Column(nullable = false)
     private int rowNum;
+
+    public Seat(int columnNum, int rowNum) {
+        this.columnNum = columnNum;
+        this.rowNum = rowNum;
+    }
 }
+
