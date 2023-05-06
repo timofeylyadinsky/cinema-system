@@ -40,7 +40,7 @@ public class SecurityConfig {
         http
                 .cors().and().csrf().disable()
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/", "/home","/auth/**","/movie/**","/session/addNew").permitAll()
+                        .requestMatchers("/", "/home","/auth/**","/movie/**","/session/addNew", "/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form

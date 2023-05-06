@@ -1,5 +1,6 @@
 package lt.timofey.cinemaSystem.service;
 
+import jakarta.transaction.Transactional;
 import lt.timofey.cinemaSystem.entity.User;
 import lt.timofey.cinemaSystem.exception.UserExistException;
 import lt.timofey.cinemaSystem.payload.SignupRequest;
@@ -37,4 +38,12 @@ public class UserService {
             throw new UserExistException("The user " + user.getUsername() + " already exist. Please check credentials");
         }
     }
+
+
+    @Transactional
+    public void update(Long id, User updatedUser) {
+        updatedUser.setId(id);
+        userRepository.save(updatedUser);
+    }
+
 }

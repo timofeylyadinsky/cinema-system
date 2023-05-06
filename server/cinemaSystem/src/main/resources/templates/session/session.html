@@ -5,6 +5,10 @@
     <title>Session</title>
 </head>
 <body>
-
+    <div th:each="s : ${sessions}">
+        <a th:href="@{/session/{id}(id=${s.getId()})}">
+            <p th:text="${s.getId()}"></p>
+        </a>
+    </div>
 </body>
 </html>

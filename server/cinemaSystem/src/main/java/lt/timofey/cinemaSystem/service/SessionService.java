@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -63,9 +64,14 @@ public class SessionService {
         ticket.setSeat(seatRepository.getSeatByColumnNumAndAndRowNum(10,10));
         ticket.setPrice(123);
         ticket.setUser(userRepository.findUserById(1L));
+        //sessionRepository.getSessionsById(1l).getBookedTickets().add(ticket);
         ticketRepository.save(ticket);
+        System.out.println(Arrays.toString(sessionRepository.getSessionsById(1L).getBookedTickets().toArray()));
         //ticketRepository.save()
     }
 
+    public Ticket getTicketToBook() {
 
+        return null;
+    }
 }

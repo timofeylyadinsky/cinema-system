@@ -7,11 +7,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 
 public class UserDetailsImpl implements UserDetails {
-    private final User user;
+    private User user;
 
     public UserDetailsImpl(User user) {
         this.user = user;
     }
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -50,5 +52,9 @@ public class UserDetailsImpl implements UserDetails {
 
     public User getUser() {
         return user;
+    }
+
+    public void update(User user) {
+        this.user = user;
     }
 }
