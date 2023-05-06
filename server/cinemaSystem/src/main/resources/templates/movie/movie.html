@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie</title>
+</head>
+<body>
+  <div th:if="${movie.isEmpty()}">
+    <p>No Movies</p>
+  </div>
+  <div th:if="${!movie.isEmpty()}">
+    <div th:each="mm : ${movie}">
+      <p th:text="${mm.getName()}">text</p>
+    </div>
+  </div>
+
+</body>
+</html>

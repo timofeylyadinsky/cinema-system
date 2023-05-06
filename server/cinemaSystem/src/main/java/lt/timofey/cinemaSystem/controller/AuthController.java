@@ -44,7 +44,7 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public String registerUser(@Valid @ModelAttribute("person") SignupRequest signupRequest, BindingResult bindingResult) {
+    public String registerUser(@Valid @RequestBody @ModelAttribute("person") SignupRequest signupRequest, BindingResult bindingResult) {
         /*ResponseEntity<Object> errors = responseErrorValidation.mapValidationService(bindingResult);
         if (!ObjectUtils.isEmpty(errors)) return errors;*/
         if (bindingResult.hasErrors()) return "auth/signup";

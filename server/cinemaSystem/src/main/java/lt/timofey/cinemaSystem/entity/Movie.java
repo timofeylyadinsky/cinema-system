@@ -2,6 +2,7 @@ package lt.timofey.cinemaSystem.entity;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
@@ -22,4 +23,14 @@ public class Movie {
 
     @Column
     private Double rate;
+
+    public Movie(String name, String title, String poster, Double rate) {
+        this.name = name;
+        this.title = title;
+        this.poster = poster;
+        this.rate = rate;
+    }
+
+    public Movie() {
+    }
 }
