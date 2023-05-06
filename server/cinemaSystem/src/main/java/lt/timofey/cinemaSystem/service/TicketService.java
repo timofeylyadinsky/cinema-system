@@ -1,12 +1,16 @@
 package lt.timofey.cinemaSystem.service;
 
+import lt.timofey.cinemaSystem.entity.Seat;
 import lt.timofey.cinemaSystem.entity.Session;
 import lt.timofey.cinemaSystem.entity.Ticket;
 import lt.timofey.cinemaSystem.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class TicketService {
     private SessionRepository sessionRepository;
 
@@ -29,7 +33,6 @@ public class TicketService {
         this.movieRepository = movieRepository;
         this.userRepository = userRepository;
     }
-
 
     /*public List<Ticket> getListOfAvailableTickets(Session session) {
         return

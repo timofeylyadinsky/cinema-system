@@ -23,9 +23,6 @@ public class Session {
     private Movie movie;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "session")
-   // @ElementCollection(targetClass = Ticket.class)
-//    @CollectionTable(name = "booked_tickets",
-//            joinColumns = @JoinColumn(name = "ticket_id"))
     private List<Ticket> bookedTickets = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)

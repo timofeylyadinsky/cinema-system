@@ -7,5 +7,8 @@
 <body>
 <p th:text="${'Hall' + sessions.hall.id}"></p>
 <p th:text="${'Movie' + sessions.getMovie().getName()}"></p>
+<div th:each="s : ${seats}">
+    <p th:text="${'row' + s.rowNum + ' column' + s.columnNum}"></p>
+</div>
 </body>
 </html>

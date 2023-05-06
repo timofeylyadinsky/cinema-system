@@ -28,6 +28,7 @@ public class SessionController {
     @GetMapping("/session/{id}")
     public String getMovieInfoById(Model model,@PathVariable("id") Long idSession) {
         model.addAttribute("sessions", sessionService.getSessionById(idSession));
+        model.addAttribute("seats", sessionService.getAvailableSeats(sessionService.getSessionById(idSession)));
         return "session/session_info";
     }
 
