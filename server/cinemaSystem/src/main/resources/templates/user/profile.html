@@ -7,7 +7,7 @@
 <body>
     <p th:text="${user.getUsername()}">username</p>
     <p th:text="${user.getEmail()}">username</p>
-    <form th:action="@{/logout}" th:method="GET">
+    <form th:action="@{/logout}" th:method="POST">
         <input type="submit" value="logout">
     </form>
     <form th:action="@{/edit}" th:method="GET">

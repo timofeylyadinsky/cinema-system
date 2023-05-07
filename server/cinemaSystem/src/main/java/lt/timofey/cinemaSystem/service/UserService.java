@@ -2,6 +2,7 @@ package lt.timofey.cinemaSystem.service;
 
 import jakarta.transaction.Transactional;
 import lt.timofey.cinemaSystem.entity.User;
+import lt.timofey.cinemaSystem.entity.enums.ERole;
 import lt.timofey.cinemaSystem.exception.UserExistException;
 import lt.timofey.cinemaSystem.payload.SignupRequest;
 import lt.timofey.cinemaSystem.repository.UserRepository;
@@ -29,7 +30,7 @@ public class UserService {
         user.setEmail(userIn.getEmail());
         user.setUsername(userIn.getUsername());
         user.setPassword(passwordEncoder.encode(userIn.getPassword()));
-
+        user.setRoles(ERole.ROLE_ADMIN);
         try {
             LOG.info("Saving User {}", userIn.getEmail());
             return userRepository.save(user);

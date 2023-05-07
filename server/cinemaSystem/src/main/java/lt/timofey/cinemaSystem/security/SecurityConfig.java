@@ -1,5 +1,6 @@
 package lt.timofey.cinemaSystem.security;
 
+import lt.timofey.cinemaSystem.entity.enums.ERole;
 import lt.timofey.cinemaSystem.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -38,9 +39,9 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .cors().and().csrf().disable()
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/", "/home","/auth/**","/movie/**","/session/addNew"/*"/**"*/).permitAll()
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form

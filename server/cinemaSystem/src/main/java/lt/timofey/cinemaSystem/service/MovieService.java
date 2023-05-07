@@ -1,5 +1,6 @@
 package lt.timofey.cinemaSystem.service;
 
+import jakarta.transaction.Transactional;
 import lt.timofey.cinemaSystem.entity.Movie;
 import lt.timofey.cinemaSystem.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,14 @@ public class MovieService {
         return movieRepository.getMovieById(id);
     }
 
+    public void addMovie(Movie movie) {
+        movieRepository.save(movie);
+    }
+
+    @Transactional
+    public void update(Long id, Movie updatedMovie) {
+        updatedMovie.setId(id);
+        movieRepository.save(updatedMovie);
+    }
 
 }

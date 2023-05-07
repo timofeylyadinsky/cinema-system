@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie_Info</title>
+</head>
+<body>
+    <p th:text="${movie.getName()}">text</p>
+    <p th:text="${movie.getTitle()}">text</p>
+    <p th:text="${movie.getRate()}">text</p>
+    <a th:href="@{/admin/movie/{id}/edit(id=${movie.getId()})}">Edit</a>
+</body>
+</html>
