@@ -1,6 +1,8 @@
 package lt.timofey.cinemaSystem.service;
 
 import lt.timofey.cinemaSystem.entity.*;
+import lt.timofey.cinemaSystem.exception.SessionExistException;
+import lt.timofey.cinemaSystem.payload.SessionDTO;
 import lt.timofey.cinemaSystem.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,6 +47,18 @@ public class SessionService {
         return sessionRepository.getSessionsById(id);
     }
 
+    public void addSession(SessionDTO session) {
+        if (sessionRepository.getSessionsBySessionDateAndHall(session.getLocalDate(), hallRepository.getHallById(session.getHallId()))!=null)
+        {
+            throw new SessionExistException("Not available parameter");
+        } else {
+            Session session1 = new Session();
+            session1.setMovie(movieRepository.getMovieById(session.getMovieId()));
+            session1.setHall(hallRepository.getHallById(session.getHallId()));
+            session1.setSessionDate(session.getLocalDate());
+            sessionRepository.save(session1);
+        }
+    }
     public List<Seat> getAvailableSeats(Session session) {
         List<Seat> availableSeats = getSeats(session.getHall().getRowsOfSeat(),session.getHall().getColumnsOfSeat());
         List<Seat> bookedSeats = getBookedSeats(session);
@@ -53,6 +67,19 @@ public class SessionService {
         }
         System.out.println(availableSeats.toString());
         return availableSeats;
+    }
+
+    public void update(SessionDTO sessionDTO, Long id) {
+        if (sessionRepository.getSessionsBySessionDateAndHall(sessionDTO.getLocalDate(), hallRepository.getHallById(sessionDTO.getHallId()))!=null)
+        {
+            throw new SessionExistException("Not available parameter");
+        } else {
+            Session session = sessionRepository.getSessionsById(id);
+            session.setSessionDate(sessionDTO.getLocalDate());
+            session.setMovie(movieRepository.getMovieById(sessionDTO.getMovieId()));
+            session.setHall(hallRepository.getHallById(sessionDTO.getHallId()));
+            sessionRepository.save(session);
+        }
     }
 
     public void makeNewSession() {

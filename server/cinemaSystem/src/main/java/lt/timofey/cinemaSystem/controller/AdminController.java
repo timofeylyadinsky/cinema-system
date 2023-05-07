@@ -3,7 +3,9 @@ package lt.timofey.cinemaSystem.controller;
 import jakarta.validation.Valid;
 import lt.timofey.cinemaSystem.entity.Hall;
 import lt.timofey.cinemaSystem.entity.Movie;
+import lt.timofey.cinemaSystem.entity.Session;
 import lt.timofey.cinemaSystem.entity.User;
+import lt.timofey.cinemaSystem.payload.SessionDTO;
 import lt.timofey.cinemaSystem.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -117,4 +119,52 @@ public class AdminController {
         return "redirect:/admin/hall";
     }
 
+    //Session controller
+    @GetMapping("/session")
+    public String getListOfSessions(Model model) {
+        model.addAttribute("sessions", sessionService.getAllSession());
+        return "admin/session/session";
+    }
+    @GetMapping("/session/add")
+    public String addSessionPage(@ModelAttribute("sessions") SessionDTO session, Model model) {
+        model.addAttribute("hall", hallService.getAllHall());
+        model.addAttribute("movie", movieService.getAllMovies());
+        return "admin/session/session_add";
+    }
+
+    @PostMapping("/session/add")
+    public String addHall(@ModelAttribute("sessions") @Valid SessionDTO session, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) return "admin/session/session_add";
+        sessionService.addSession(session);
+        return "redirect:/admin";
+    }
+
+    @GetMapping("/session/{id}")
+    public String getSessionInfoById(Model model,@PathVariable("id") Long idSession) {
+        model.addAttribute("sessions", sessionService.getSessionById(idSession));
+        return "admin/session/session_info";
+    }
+
+    @GetMapping("/session/{id}/edit")
+    public String editSession(Model model, @PathVariable("id") Long idSession, @ModelAttribute("sessions") @Valid SessionDTO session, BindingResult bindingResult) {
+//        model.addAttribute("sessions", new SessionDTO(
+//                sessionService.getSessionById(idSession).getMovie().getId(),
+//                sessionService.getSessionById(idSession).getHall().getId(),
+//                sessionService.getSessionById(idSession).getSessionDate()));
+        model.addAttribute("currentSessions", sessionService.getSessionById(idSession));
+        model.addAttribute("hall", hallService.getAllHall());
+        model.addAttribute("movie", movieService.getAllMovies());
+        model.addAttribute("idS", idSession);
+        return "admin/session/session_edit";
+    }
+
+    @PatchMapping("/session/{id}/update")
+    public String updateSession(@ModelAttribute("sessions") @Valid SessionDTO session, BindingResult bindingResult, @PathVariable("id") Long idSession) {
+
+        if(bindingResult.hasErrors()){
+            return "admin/session/session_edit";
+        }
+        sessionService.update(session, idSession);
+        return "redirect:/admin/session";
+    }
 }

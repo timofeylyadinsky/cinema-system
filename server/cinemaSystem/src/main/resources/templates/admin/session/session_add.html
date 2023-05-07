@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Session add</title>
+</head>
+<body>
+<form th:object="${sessions}" method="post" th:action="@{/admin/session/add}">
+    <label for="movie">Movie Name</label>
+    <select class="form-control" th:field="*{movieId}" id="movie">
+        <option th:each="s : ${movie}" th:value="${s.id}" th:text="${s.id + ' ' + s.name}" name="movie"></option>
+    </select>
+    <label for="hall">Hall</label>
+    <select class="form-control" th:field="*{hallId}" id="hall">
+        <option th:each="s : ${hall}" th:value="${s.id}" th:text="${s.id + ' ' + s.rowsOfSeat + '*'+s.columnsOfSeat}" name="hall"></option>
+    </select>
+    <label for="date">date</label>
+    <input type="date" id="date" th:field="*{localDate}">
+    <button type="submit">submit</button>
+</form>
+</body>
+</html>

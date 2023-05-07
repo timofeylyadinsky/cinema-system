@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Session Info</title>
+</head>
+<body>
+<p th:text="${sessions.getId()}">text</p>
+<p th:text="${sessions.getMovie()}">text</p>
+<p th:text="${sessions.getHall()}">text</p>
+<p th:text="${sessions.getSessionDate()}">text</p>
+<a th:href="@{/admin/session/{id}/edit(id=${sessions.getId()})}">Edit</a>
+</body>
+</html>

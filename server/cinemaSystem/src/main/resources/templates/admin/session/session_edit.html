@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Session Edit</title>
+</head>
+<body>
+<form th:object="${sessions}" th:method="PATCH" th:action="@{/admin/session/{id}/update(id=${idS})}">
+    <label for="movie">Movie Name</label>
+    <select class="form-control" th:field="*{movieId}" id="movie">
+        <option th:value="${currentSessions.movie.id}" th:text="${currentSessions.movie.id + ' ' + currentSessions.movie.name}" name="movie"></option>
+        <option th:each="s : ${movie}" th:value="${s.id}" th:text="${s.id + ' ' + s.name}" name="movie"></option>
+    </select>
+    <label for="hall">Hall</label>
+    <select class="form-control" th:field="*{hallId}" id="hall">
+        <option th:value="${currentSessions.hall.id}" th:text="${currentSessions.hall.id + ' ' + currentSessions.hall.rowsOfSeat + '*' + currentSessions.hall.columnsOfSeat}" name="hall"></option>
+        <option th:each="s : ${hall}" th:value="${s.id}" th:text="${s.id + ' ' + s.rowsOfSeat + '*'+s.columnsOfSeat}" name="hall"></option>
+    </select>
+    <label for="date">date</label>
+    <input type="date" id="date" th:field="*{localDate}" th:value="${{currentSessions.getSessionDate()}}">
+    <button type="submit">submit</button>
+</form>
+</body>
+</html>

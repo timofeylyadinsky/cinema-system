@@ -7,12 +7,12 @@
 <body>
 <form th:object="${hall}" method="post" th:action="@{/admin/hall/add}">
     <label for="name">Column Of SEat</label>
-    <input type="text" id="name" th:field="*{columnsOfSeat}">
+    <input type="number" id="name" th:field="*{columnsOfSeat}">
     <p th:each="error : ${#fields.errors('columnsOfSeat')}"
        th:text="${error}">Validation error</p>
     <br>
     <label for="title">Row Of SEAT</label>
-    <input type="text" id="title" th:field="*{rowsOfSeat}">
+    <input type="number" id="title" th:field="*{rowsOfSeat}">
     <p th:each="error : ${#fields.errors('rowsOfSeat')}"
        th:text="${error}">Validation error</p>
     <br>
