@@ -51,7 +51,9 @@ public class SecurityConfig {
                         .failureUrl("/auth/signin?error")
                         .permitAll()
                 )
-                .logout((logout) -> logout.permitAll())
+                .logout((logout) -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/auth/login").permitAll())
                 .authenticationProvider(authenticationProvider())
                 .exceptionHandling();
 
