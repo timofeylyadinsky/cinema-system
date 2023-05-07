@@ -3,6 +3,7 @@ package lt.timofey.cinemaSystem.service;
 import lt.timofey.cinemaSystem.entity.Seat;
 import lt.timofey.cinemaSystem.entity.Session;
 import lt.timofey.cinemaSystem.entity.Ticket;
+import lt.timofey.cinemaSystem.entity.User;
 import lt.timofey.cinemaSystem.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,10 +35,17 @@ public class TicketService {
         this.userRepository = userRepository;
     }
 
+    public void bookTicket(Long sessionId, Long seat, User user) {
+        Ticket ticket = new Ticket();
+        ticket.setSeat(seatRepository.getSeatById(seat));
+        ticket.setSession(sessionRepository.getSessionsById(sessionId));
+        ticket.setPrice(150);
+        ticket.setUser(user);
+        ticketRepository.save(ticket);
+    }
     /*public List<Ticket> getListOfAvailableTickets(Session session) {
         return
     }
-
     public Ticket getTicketToBook(int row, int column) {
         return ticketRepository.get;
     }*/

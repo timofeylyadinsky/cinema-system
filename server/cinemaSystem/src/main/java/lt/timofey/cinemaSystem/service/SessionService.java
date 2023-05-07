@@ -71,18 +71,13 @@ public class SessionService {
         sessionRepository.save(new Session(movieRepository.getMovieById(1L), hallRepository.getHallById(2L), LocalDate.now()));
         sessionRepository.save(new Session(movieRepository.getMovieById(2L), hallRepository.getHallById(3L), LocalDate.now()));
         sessionRepository.save(new Session(movieRepository.getMovieById(3L), hallRepository.getHallById(2L), LocalDate.of(2023, 5, 7)));
-        //ticketRepository.save(new Ticket(sessionRepository.getSessionsById(1L), seatRepository.getSeatByColumnNumAndAndRowNum(10,10), 123, userRepository.findUserById(1L)));
         Ticket ticket = new Ticket();
         ticket.setSession(sessionRepository.getSessionsById(1L));
-        ticket.setSeat(seatRepository.getSeatByColumnNumAndAndRowNum(10,10));
+        ticket.setSeat(seatRepository.getSeatByColumnNumAndRowNum(10,10));
         ticket.setPrice(123);
-        //ticket.setUser(userRepository.findUserById(1L));
-        //sessionRepository.getSessionsById(1l).getBookedTickets().add(ticket);
-        //ticketRepository.save(ticket);
-        ticket.setSeat(seatRepository.getSeatByColumnNumAndAndRowNum(1,2));
+        ticket.setSeat(seatRepository.getSeatByColumnNumAndRowNum(1,2));
         ticketRepository.save(ticket);
         System.out.println(Arrays.toString(sessionRepository.getSessionsById(1L).getBookedTickets().toArray()));
-        //ticketRepository.save()
     }
 
 
@@ -99,7 +94,7 @@ public class SessionService {
         List<Seat> seats = new ArrayList<>();
         for(int i = 1; i <= columnNum; i++) {
             for(int j = 1; j <= rowNum; j++) {
-                seats.add(seatRepository.getSeatByColumnNumAndAndRowNum(i,j));
+                seats.add(seatRepository.getSeatByColumnNumAndRowNum(i,j));
             }
         }
         return seats;
