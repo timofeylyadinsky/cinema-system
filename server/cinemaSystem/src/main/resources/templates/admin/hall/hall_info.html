@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hall Info</title>
+</head>
+<body>
+    <p th:text="${'Hall ' + hall.id}">text</p>
+    <p th:text="${'Columns seat ' + hall.columnsOfSeat}">text</p>
+    <p th:text="${'Rows seat ' + hall.rowsOfSeat}">text</p>
+    <a th:href="@{/admin/hall/{id}/edit(id=${hall.getId()})}">Edit</a>
+</body>
+</html>

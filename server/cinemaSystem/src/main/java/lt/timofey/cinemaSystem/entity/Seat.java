@@ -13,12 +13,13 @@ public class Seat {
     private Long id;
 
     @Column(nullable = false)
-    private int columnNum;
-
-    @Column(nullable = false)
     private int rowNum;
 
-    public Seat(int columnNum, int rowNum) {
+    @Column(nullable = false)
+    private int columnNum;
+
+
+    public Seat(int rowNum, int columnNum) {
         this.columnNum = columnNum;
         this.rowNum = rowNum;
     }

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hall ADD</title>
+</head>
+<body>
+<form th:object="${hall}" method="post" th:action="@{/admin/hall/add}">
+    <label for="name">Column Of SEat</label>
+    <input type="text" id="name" th:field="*{columnsOfSeat}">
+    <p th:each="error : ${#fields.errors('columnsOfSeat')}"
+       th:text="${error}">Validation error</p>
+    <br>
+    <label for="title">Row Of SEAT</label>
+    <input type="text" id="title" th:field="*{rowsOfSeat}">
+    <p th:each="error : ${#fields.errors('rowsOfSeat')}"
+       th:text="${error}">Validation error</p>
+    <br>
+    <button type="submit">submit</button>
+</form>
+</body>
+</html>

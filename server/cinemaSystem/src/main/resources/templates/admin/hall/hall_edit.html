@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hall edit</title>
+</head>
+<body>
+<form th:object="${hall}" th:method="PATCH" th:action="@{/admin/hall/{id}/update(id=${hall.getId()})}">
+    <label for="columns">Columns Seat Num</label>
+    <input type="number" id="columns" th:field="*{columnsOfSeat}" th:value="${hall.getColumnsOfSeat()}">
+    <p th:each="error : ${#fields.errors('columnsOfSeat')}"
+       th:text="${error}">Validation error</p>
+    <label for="rows">Rows Seat Num</label>
+    <input type="number" id="rows" th:field="*{rowsOfSeat}" th:value="${hall.getRowsOfSeat()}">
+    <p th:each="error : ${#fields.errors('rowsOfSeat')}"
+       th:text="${error}">Validation error</p>
+    <button type="submit">submit</button>
+</form>
+</body>
+</html>
