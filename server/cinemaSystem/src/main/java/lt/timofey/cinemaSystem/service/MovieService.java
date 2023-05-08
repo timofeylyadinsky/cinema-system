@@ -22,11 +22,11 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
-    public void saveSomeMovie() {
-        movieRepository.save(new Movie("Pulp Fiction", "Quentin Tarantino Movie", "None", 5.0));
-        movieRepository.save(new Movie("Kill Bill", "Quentin Tarantino Movie", "None", 4.5));
-        movieRepository.save(new Movie("Snatch", "Gay Richie Movie", "None", 5.0));
-    }
+//    public void saveSomeMovie() {
+//        movieRepository.save(new Movie("Pulp Fiction", "Quentin Tarantino Movie", "None", 5.0));
+//        movieRepository.save(new Movie("Kill Bill", "Quentin Tarantino Movie", "None", 4.5));
+//        movieRepository.save(new Movie("Snatch", "Gay Richie Movie", "None", 5.0));
+//    }
 
     public Movie getMovieById(Long id) {
         return movieRepository.getMovieById(id);

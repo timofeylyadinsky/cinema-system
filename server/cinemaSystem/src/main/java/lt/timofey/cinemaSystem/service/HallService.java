@@ -48,4 +48,8 @@ public class HallService {
         }
         hallRepository.save(updatedHall);
     }
+
+    public void delete(Long id) {
+        hallRepository.delete(hallRepository.getHallById(id));
+    }
 }

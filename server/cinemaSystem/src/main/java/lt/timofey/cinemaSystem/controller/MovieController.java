@@ -20,10 +20,10 @@ public class MovieController {
         return "movie/movie";
     }
 
-    @GetMapping("/movie/add")
-    public void addMovie() {
-        movieService.saveSomeMovie();
-    }
+//    @GetMapping("/movie/add")
+//    public void addMovie() {
+//        movieService.saveSomeMovie();
+//    }
 
     @GetMapping("/movie/{id}")
     public String getMovieInfoById(Model model,@PathVariable("id") Long idFilm) {

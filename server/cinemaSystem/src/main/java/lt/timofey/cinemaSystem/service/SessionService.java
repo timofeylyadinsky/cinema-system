@@ -82,30 +82,30 @@ public class SessionService {
         }
     }
 
-    public void makeNewSession() {
-        movieRepository.save(new Movie("Pulp Fiction", "Quentin Tarantino Movie", "None", 5.0));
-        movieRepository.save(new Movie("Kill Bill", "Quentin Tarantino Movie", "None", 4.5));
-        movieRepository.save(new Movie("Snatch", "Gay Richie Movie", "None", 5.0));
-        hallRepository.save(new Hall(10,10));
-        hallRepository.save(new Hall(10,10));
-        hallRepository.save(new Hall(15,15));
-        for (int i = 1; i <= 15; i++) {
-            for (int j = 1; j <=15; j++) {
-                seatRepository.save(new Seat(i,j));
-            }
-        }
-        sessionRepository.save(new Session(movieRepository.getMovieById(1L), hallRepository.getHallById(1L), LocalDate.now()));
-        sessionRepository.save(new Session(movieRepository.getMovieById(1L), hallRepository.getHallById(2L), LocalDate.now()));
-        sessionRepository.save(new Session(movieRepository.getMovieById(2L), hallRepository.getHallById(3L), LocalDate.now()));
-        sessionRepository.save(new Session(movieRepository.getMovieById(3L), hallRepository.getHallById(2L), LocalDate.of(2023, 5, 7)));
-        Ticket ticket = new Ticket();
-        ticket.setSession(sessionRepository.getSessionsById(1L));
-        ticket.setSeat(seatRepository.getSeatByColumnNumAndRowNum(10,10));
-        ticket.setPrice(123);
-        ticket.setSeat(seatRepository.getSeatByColumnNumAndRowNum(1,2));
-        ticketRepository.save(ticket);
-        System.out.println(Arrays.toString(sessionRepository.getSessionsById(1L).getBookedTickets().toArray()));
-    }
+//    public void makeNewSession() {
+//        movieRepository.save(new Movie("Pulp Fiction", "Quentin Tarantino Movie", "None", 5.0));
+//        movieRepository.save(new Movie("Kill Bill", "Quentin Tarantino Movie", "None", 4.5));
+//        movieRepository.save(new Movie("Snatch", "Gay Richie Movie", "None", 5.0));
+//        hallRepository.save(new Hall(10,10));
+//        hallRepository.save(new Hall(10,10));
+//        hallRepository.save(new Hall(15,15));
+//        for (int i = 1; i <= 15; i++) {
+//            for (int j = 1; j <=15; j++) {
+//                seatRepository.save(new Seat(i,j));
+//            }
+//        }
+//        sessionRepository.save(new Session(movieRepository.getMovieById(1L), hallRepository.getHallById(1L), LocalDate.now()));
+//        sessionRepository.save(new Session(movieRepository.getMovieById(1L), hallRepository.getHallById(2L), LocalDate.now()));
+//        sessionRepository.save(new Session(movieRepository.getMovieById(2L), hallRepository.getHallById(3L), LocalDate.now()));
+//        sessionRepository.save(new Session(movieRepository.getMovieById(3L), hallRepository.getHallById(2L), LocalDate.of(2023, 5, 7)));
+//        Ticket ticket = new Ticket();
+//        ticket.setSession(sessionRepository.getSessionsById(1L));
+//        ticket.setSeat(seatRepository.getSeatByColumnNumAndRowNum(10,10));
+//        ticket.setPrice(123);
+//        ticket.setSeat(seatRepository.getSeatByColumnNumAndRowNum(1,2));
+//        ticketRepository.save(ticket);
+//        System.out.println(Arrays.toString(sessionRepository.getSessionsById(1L).getBookedTickets().toArray()));
+//    }
 
 
     public List<Seat> getBookedSeats(Session sessionId) {

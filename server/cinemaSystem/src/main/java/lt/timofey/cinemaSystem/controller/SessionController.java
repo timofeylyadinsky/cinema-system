@@ -24,10 +24,10 @@ public class SessionController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/session/addNew")
-    public void makeSession() {
-        sessionService.makeNewSession();
-    }
+//    @GetMapping("/session/addNew")
+//    public void makeSession() {
+//        sessionService.makeNewSession();
+//    }
 
     @GetMapping("/session")
     public String showAllSession(Model model){

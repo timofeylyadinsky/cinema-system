@@ -144,10 +144,6 @@ public class AdminController {
 
     @GetMapping("/session/{id}/edit")
     public String editSession(Model model, @PathVariable("id") Long idSession, @ModelAttribute("sessions") @Valid SessionDTO session, BindingResult bindingResult) {
-//        model.addAttribute("sessions", new SessionDTO(
-//                sessionService.getSessionById(idSession).getMovie().getId(),
-//                sessionService.getSessionById(idSession).getHall().getId(),
-//                sessionService.getSessionById(idSession).getSessionDate()));
         model.addAttribute("currentSessions", sessionService.getSessionById(idSession));
         model.addAttribute("hall", hallService.getAllHall());
         model.addAttribute("movie", movieService.getAllMovies());
@@ -172,8 +168,14 @@ public class AdminController {
     }
 
     @DeleteMapping("/movie/{id}/delete")
-    public String deleteMovie(@PathVariable("id") Long idSession) {
-        movieService.delete(idSession);
+    public String deleteMovie(@PathVariable("id") Long idMovie) {
+        movieService.delete(idMovie);
         return "redirect:/admin/movie";
+    }
+
+    @DeleteMapping("/hall/{id}/delete")
+    public String deleteHall(@PathVariable("id") Long idHall) {
+        hallService.delete(idHall);
+        return "redirect:/admin/hall";
     }
 }

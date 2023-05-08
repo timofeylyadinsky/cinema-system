@@ -8,6 +8,12 @@
     <p th:text="${'Hall ' + hall.id}">text</p>
     <p th:text="${'Columns seat ' + hall.columnsOfSeat}">text</p>
     <p th:text="${'Rows seat ' + hall.rowsOfSeat}">text</p>
-    <a th:href="@{/admin/hall/{id}/edit(id=${hall.getId()})}">Edit</a>
+<!--    <a th:href="@{/admin/hall/{id}/edit(id=${hall.getId()})}">Edit</a>-->
+    <form th:action="@{/admin/hall/{id}/edit(id=${hall.getId()})}" th:method="GET">
+        <input type="submit" value="edit">
+    </form>
+    <form th:action="@{/admin/hall/{id}/delete(id=${hall.getId()})}" th:method="DELETE">
+        <input type="submit" value="Delete">
+    </form>
 </body>
 </html>
