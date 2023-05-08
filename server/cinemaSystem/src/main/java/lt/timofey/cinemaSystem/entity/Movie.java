@@ -4,6 +4,10 @@ package lt.timofey.cinemaSystem.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -24,6 +28,11 @@ public class Movie {
     @Column
     private Double rate;
 
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "movie")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private List<Session> session;
+
     public Movie(String name, String title, String poster, Double rate) {
         this.name = name;
         this.title = title;
@@ -32,5 +41,16 @@ public class Movie {
     }
 
     public Movie() {
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", title='" + title + '\'' +
+                ", poster='" + poster + '\'' +
+                ", rate=" + rate +
+                '}';
     }
 }

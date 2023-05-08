@@ -5,9 +5,15 @@
     <title>Movie_Info</title>
 </head>
 <body>
-    <p th:text="${sessions.getName()}">text</p>
+    <p th:text="${movie.getName()}">text</p>
     <p th:text="${movie.getTitle()}">text</p>
     <p th:text="${movie.getRate()}">text</p>
-    <a th:href="@{/admin/movie/{id}/edit(id=${movie.getId()})}">Edit</a>
+<!--    <a th:href="@{/admin/movie/{id}/edit(id=${movie.getId()})}">Edit</a>-->
+    <form th:action="@{/admin/movie/{id}/edit(id=${movie.getId()})}" th:method="GET">
+        <input type="submit" value="edit">
+    </form>
+    <form th:action="@{/admin/movie/{id}/delete(id=${movie.getId()})}" th:method="DELETE">
+        <input type="submit" value="Delete">
+    </form>
 </body>
 </html>

@@ -9,6 +9,12 @@
 <p th:text="${sessions.getMovie()}">text</p>
 <p th:text="${sessions.getHall()}">text</p>
 <p th:text="${sessions.getSessionDate()}">text</p>
-<a th:href="@{/admin/session/{id}/edit(id=${sessions.getId()})}">Edit</a>
+<!--<a th:href="@{/admin/session/{id}/edit(id=${sessions.getId()})}">Edit</a>-->
+<form th:action="@{/admin/session/{id}/edit(id=${sessions.getId()})}" th:method="GET">
+    <input type="submit" value="edit">
+</form>
+<form th:action="@{/admin/session/{id}/delete(id=${sessions.getId()})}" th:method="DELETE">
+    <input type="submit" value="Delete">
+</form>
 </body>
 </html>

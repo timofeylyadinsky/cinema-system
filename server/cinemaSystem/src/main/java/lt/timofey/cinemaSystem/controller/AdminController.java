@@ -3,12 +3,9 @@ package lt.timofey.cinemaSystem.controller;
 import jakarta.validation.Valid;
 import lt.timofey.cinemaSystem.entity.Hall;
 import lt.timofey.cinemaSystem.entity.Movie;
-import lt.timofey.cinemaSystem.entity.Session;
-import lt.timofey.cinemaSystem.entity.User;
 import lt.timofey.cinemaSystem.payload.SessionDTO;
 import lt.timofey.cinemaSystem.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -166,5 +163,17 @@ public class AdminController {
         }
         sessionService.update(session, idSession);
         return "redirect:/admin/session";
+    }
+
+    @DeleteMapping("/session/{id}/delete")
+    public String deleteSession(@PathVariable("id") Long idSession) {
+        sessionService.delete(idSession);
+        return "redirect:/admin/session";
+    }
+
+    @DeleteMapping("/movie/{id}/delete")
+    public String deleteMovie(@PathVariable("id") Long idSession) {
+        movieService.delete(idSession);
+        return "redirect:/admin/movie";
     }
 }

@@ -127,4 +127,7 @@ public class SessionService {
         return seats;
     }
 
+    public void delete(Long id) {
+        sessionRepository.delete(sessionRepository.getSessionsById(id));
+    }
 }
