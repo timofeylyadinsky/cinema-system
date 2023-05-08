@@ -15,7 +15,7 @@ public class Ticket {
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     private Session session;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.MERGE, orphanRemoval = false, fetch = FetchType.LAZY)
     private Seat seat;
 
     @Column(nullable = false)
