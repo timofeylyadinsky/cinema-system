@@ -7,6 +7,7 @@ import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -26,9 +27,9 @@ public class Hall {
     @Min(1)
     private int columnsOfSeat;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "hall")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private List<Session> session;
+    @OneToMany(cascade = CascadeType.REFRESH, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "hall")
+    //@OnDelete(action = OnDeleteAction.CASCADE)
+    private List<Session> session = new ArrayList<>();
 
 
     public Hall(int rowsOfSeat, int columnsOfSeat) {

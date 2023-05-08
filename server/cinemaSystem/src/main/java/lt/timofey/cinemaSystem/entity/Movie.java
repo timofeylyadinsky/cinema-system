@@ -7,6 +7,7 @@ import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -29,9 +30,9 @@ public class Movie {
     private Double rate;
 
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "movie")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private List<Session> session;
+    @OneToMany(cascade = CascadeType.REFRESH, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "movie")
+    //@OnDelete(action = OnDeleteAction.CASCADE)
+    private List<Session> session = new ArrayList<>();
 
     public Movie(String name, String title, String poster, Double rate) {
         this.name = name;
