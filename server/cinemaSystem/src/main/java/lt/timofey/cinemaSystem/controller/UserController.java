@@ -2,6 +2,7 @@ package lt.timofey.cinemaSystem.controller;
 
 import jakarta.validation.Valid;
 import lt.timofey.cinemaSystem.entity.User;
+import lt.timofey.cinemaSystem.service.TicketService;
 import lt.timofey.cinemaSystem.service.UserDetailsImpl;
 import lt.timofey.cinemaSystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private TicketService ticketService;
+
     @GetMapping("/profile")
     public String getUserProfile(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         User user = userDetails.getUser();
         model.addAttribute("user", user);
+        model.addAttribute("ticket", ticketService.getTicketByUser(user));
         return "user/profile";
     }
 

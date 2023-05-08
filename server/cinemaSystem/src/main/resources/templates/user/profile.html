@@ -13,5 +13,11 @@
     <form th:action="@{/edit}" th:method="GET">
         <input type="submit" th:action="@{/edit}" value="edit">
     </form>
+    <div th:each="s : ${ticket}">
+        <form th:method="DELETE" th:action="@{/profile/ticket/{id}/delete(id=${s.id})}">
+            <p th:text="${s.id}"></p>
+            <input type="submit" value="Delete">
+        </form>
+    </div>
 </body>
 </html>

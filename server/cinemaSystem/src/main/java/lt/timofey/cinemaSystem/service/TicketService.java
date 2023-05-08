@@ -43,6 +43,14 @@ public class TicketService {
         ticket.setUser(user);
         ticketRepository.save(ticket);
     }
+
+    public List<Ticket> getTicketByUser(User user) {
+        return ticketRepository.getTicketsByUser(user);
+    }
+
+    public void delete(Long id, User user) {
+        ticketRepository.delete(ticketRepository.getTicketByIdAndUser(id, user));
+    }
     /*public List<Ticket> getListOfAvailableTickets(Session session) {
         return
     }
