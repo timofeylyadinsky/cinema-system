@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
+<header class="header-container container" id="result">
+    <nav class="nav-container">
+        <ul class="nav-list">
+            <li><a th:href="@{/movie}" class="nav-link">Movies</a></li>
+            <li><a th:href="@{/session}" class="nav-link">Session</a></li>
+            <li sec:authorize="isFullyAuthenticated()"><a th:href="@{/profile}" class="nav-link">Profile</a></li>
+            <li sec:authorize="!isFullyAuthenticated()" ><a th:href="@{/auth/signin}" class="nav-link">SignIn</a></li>
+            <li sec:authorize="!isFullyAuthenticated()" ><a th:href="@{/auth/signup}" class="nav-link">SignUp</a></li>
+        </ul>
+    </nav>
+</header>
 <p th:text="${'Hall' + sessions.hall.id}"></p>
 <p th:text="${'Movie' + sessions.getMovie().getName()}"></p>
 <!--<div th:each="s : ${seats}">-->

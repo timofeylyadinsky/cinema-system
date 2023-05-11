@@ -56,7 +56,7 @@ public class AuthController {
         if (!ObjectUtils.isEmpty(errors)) return errors;*/
         if (bindingResult.hasErrors()) return "auth/signup";
         userService.createUser(signupRequest);
-        return "redirect:/home";
+        return "redirect:/";
     }
 
     @PostMapping("/signin")

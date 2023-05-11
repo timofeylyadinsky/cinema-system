@@ -1,23 +1,42 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
-    <p th:text="${user.getUsername()}">username</p>
-    <p th:text="${user.getEmail()}">username</p>
-    <form th:action="@{/logout}" th:method="POST">
-        <input type="submit" value="logout">
+<header class="header-container container" id="result">
+    <nav class="nav-container">
+        <ul class="nav-list">
+            <li><a th:href="@{/movie}" class="nav-link">Movies</a></li>
+            <li><a th:href="@{/session}" class="nav-link">Session</a></li>
+            <li sec:authorize="isFullyAuthenticated()"><a th:href="@{/profile}" class="nav-link">Profile</a></li>
+            <li sec:authorize="!isFullyAuthenticated()" ><a th:href="@{/auth/signin}" class="nav-link">SignIn</a></li>
+            <li sec:authorize="!isFullyAuthenticated()" ><a th:href="@{/auth/signup}" class="nav-link">SignUp</a></li>
+        </ul>
+    </nav>
+</header>
+<main class="main-container">
+    <h1 id="title">User Info</h1>
+    <p th:text="${user.getUsername()}" class="userinfo">username</p>
+    <p th:text="${user.getEmail()}" class="userinfo">username</p>
+    <form th:action="@{/logout}" th:method="POST" >
+        <input type="submit" value="logout" class="button-user">
     </form>
-    <form th:action="@{/edit}" th:method="GET">
-        <input type="submit" th:action="@{/edit}" value="edit">
+    <form th:action="@{/edit}" th:method="GET" >
+        <input type="submit" th:action="@{/edit}" value="edit" class="button-user">
     </form>
+    <h2>User Tickets</h2>
     <div th:each="s : ${ticket}">
-        <form th:method="DELETE" th:action="@{/profile/ticket/{id}/delete(id=${s.id})}">
-            <p th:text="${s.id}"></p>
-            <input type="submit" value="Delete">
+        <form th:method="DELETE" th:action="@{/profile/ticket/{id}/delete(id=${s.id})}" class="ticket-block">
+            <a th:href="@{/session/{id}(id=${s.getId()})}"><p th:text="${'Session ' + s.id + ''}" class="ticket-info"></p></a>
+                <p th:text="${s.getSession().movie.name}" class="ticket-info"></p>
+                <p th:text="${s.getSeat().rowNum + '*' + s.getSeat().getColumnNum()}" class="ticket-info"></p>
+                <input type="submit" value="Delete" class="button-ticket">
         </form>
     </div>
+</main>
+
 </body>
 </html>

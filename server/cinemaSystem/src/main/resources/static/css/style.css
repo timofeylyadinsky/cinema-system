@@ -1,0 +1,169 @@
+body {
+    background-color: black;
+    color: #c4bcbc;
+}
+.header-container {
+    background-repeat: no-repeat;
+    background-position: center 0;
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+}
+.nav-container{
+    margin-left: auto
+}
+.nav-list{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    padding: 0;
+    color: #fff;
+    height: 50px;
+}
+.nav-list li{
+    margin: 0 15px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+}
+.header-text{
+    margin: 20px 20px 20px 15px;
+    line-height: 50px;
+    height: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: bold;
+}
+.nav-link{
+    color: #fff;
+    transition-duration: 0.4s;
+    text-decoration: none;
+}
+.nav-link:hover{
+    color: #BDAE82;
+}
+
+#title {
+    font-size: 60px;
+    color: #BDAE82;
+    font-family: "Comic Sans MS";
+}
+
+.userinfo {
+    color: #BDAE82;
+    font-size: 30px;
+    font-family: "Comic Sans MS";
+}
+
+.button-user {
+    width: 220px;
+    height: 55px;
+    cursor: pointer;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    background-color: #bdae82;
+    border: 0;
+    color: #000;
+    transition-duration: 0.4s;
+    margin-bottom: 10px;
+}
+.button-user:hover{
+    color: #fff;
+}
+
+.button-ticket {
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    background-color: #bdae82;
+    border: 5px;
+    border-color: #ff0000;
+    color: #000;
+    transition-duration: 0.4s;
+    margin-bottom: 10px;
+}
+
+.ticket-block {
+    display: flex;
+    flex-direction: row;
+    border: 2px dashed #ff0000;
+    gap: 35px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.ticket-info {
+    color: #0000ff;
+    font-size: 15px;
+    font-family: "Comic Sans MS";
+}
+
+h2 {
+    font-size: 40px;
+    color: #BDAE82;
+    font-family: "Comic Sans MS";
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.poster {
+    height: 350px;
+}
+.preview-image {
+    height: 130px;
+    transition-duration: 0.4s;
+}
+.preview-image:hover {
+    height: 150px;
+}
+
+.movie-title {
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+}
+.movie-desc {
+    font-size: 25px;
+    margin-top: 0px;
+    width: 50%;
+}
+
+.movie-container {
+    display: flex;
+    flex-direction: row;
+    gap: 45px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    border: 1px solid #5b5b5b;
+    margin-top: 10px;
+}
+
+.movie-container a {
+    text-decoration: none;
+    color: #BDAE82;
+}
+.movie-container a p:hover{
+    text-decoration: none;
+    font-size: 40px;
+    transition-duration: 0.7s;
+    color: #ffffff;
+}
