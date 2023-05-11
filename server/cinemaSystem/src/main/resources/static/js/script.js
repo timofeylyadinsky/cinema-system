@@ -28,3 +28,5 @@ function searchFunction() {
 
 
 document.getElementById("search-box").addEventListener('input', (e)=> {searchFunction()})
+
+document.getElementById("data-search").addEventListener('input', (e)=>{console.log(e.currentTarget.value)})

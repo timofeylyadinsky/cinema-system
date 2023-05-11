@@ -22,6 +22,15 @@
     <img th:src="${movie.getPoster()}" th:alt="${movie.getName() + ' poster'}" class="poster">
     <p th:text="${movie.getName()}" class="movie-title">text</p>
     <p th:text="${movie.getTitle()}" class="movie-desc">text</p>
+    <h2>Session with film</h2>
+    <div th:each="s : ${sessions}" >
+        <a th:href="@{/session/{id}(id=${s.id})}" class="session-link">
+        <div class="sessions-block-movie">
+            <p th:text="${'Hall ' + s.hall}" class="movie-desc"></p>
+            <p th:text="${s.sessionDate}" class="movie-desc"></p>
+        </div>
+        </a>
+    </div>
 </main>
 
 </body>

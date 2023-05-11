@@ -9,6 +9,7 @@
 <header class="header-container container" id="result">
     <nav class="nav-container">
         <ul class="nav-list">
+            <li><input type="date" id="data-search"></li>
             <li><a th:href="@{/movie}" class="nav-link">Movies</a></li>
             <li><a th:href="@{/session}" class="nav-link">Session</a></li>
             <li sec:authorize="isFullyAuthenticated()"><a th:href="@{/profile}" class="nav-link">Profile</a></li>
@@ -20,7 +21,7 @@
 <main class="main-container">
     <div th:each="s : ${sessions}" class="movie-container">
         <a th:href="@{/session/{id}(id=${s.getId()})}" class="session-link">
-        <div class="movie-container">
+        <div class="movie-container" th:if="${currentDate.isBefore(s.sessionDate) || currentDate.isEqual(s.sessionDate)}">
             <p th:text="${s.getId()}"></p>
 
         <p th:text="${s.movie.getName()}"></p>
@@ -30,5 +31,6 @@
         </a>
     </div>
 </main>
+<script type="text/javascript" th:src="@{./js/script.js}"></script>
 </body>
 </html>

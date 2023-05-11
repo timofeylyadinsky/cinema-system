@@ -13,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+
 @Controller
 public class SessionController {
     @Autowired
@@ -32,6 +34,8 @@ public class SessionController {
     @GetMapping("/session")
     public String showAllSession(Model model){
         model.addAttribute("sessions", sessionService.getAllSession());
+        model.addAttribute("currentDate", LocalDate.now());
+        System.out.println(LocalDate.now().isEqual(sessionService.getAllSession().get(0).getSessionDate()));
         return "session/session";
     }
 
