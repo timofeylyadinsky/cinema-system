@@ -43,7 +43,13 @@ public class UserService {
 
     @Transactional
     public void update(Long id, User updatedUser) {
+        //User user = userRepository.findUserById(id);
         updatedUser.setId(id);
+        updatedUser.setRoles(userRepository.findUserById(id).getRoles());
+        updatedUser.setTickets(userRepository.findUserById(id).getTickets());
+//        user.setPassword(updatedUser.getPassword());
+//        user.setEmail(updatedUser.getEmail());
+//        user.setUsername(updatedUser.getUsername());
         userRepository.save(updatedUser);
     }
 

@@ -42,7 +42,7 @@ public class UserController {
     public String update(@ModelAttribute("person") @Valid User person, @AuthenticationPrincipal UserDetailsImpl userDetails, BindingResult bindingResult) {
 
         if(bindingResult.hasErrors()){
-            return "redirect:/update";
+            return "redirect:/edit";
         }
 
         userService.update(userDetails.getUser().getId(),person);

@@ -19,7 +19,7 @@
 </header>
 <main class="main-container">
     <div th:each="s : ${sessions}" class="movie-container">
-        <a th:href="@{/session/{id}(id=${s.getId()})}">
+        <a th:href="@{/session/{id}(id=${s.getId()})}" class="session-link">
         <div class="movie-container">
             <p th:text="${s.getId()}"></p>
 

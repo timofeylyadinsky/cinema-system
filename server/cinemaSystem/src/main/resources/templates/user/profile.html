@@ -30,7 +30,7 @@
     <h2>User Tickets</h2>
     <div th:each="s : ${ticket}">
         <form th:method="DELETE" th:action="@{/profile/ticket/{id}/delete(id=${s.id})}" class="ticket-block">
-            <a th:href="@{/session/{id}(id=${s.getId()})}"><p th:text="${'Session ' + s.id + ''}" class="ticket-info"></p></a>
+            <a th:href="@{/session/{id}(id=${s.session.getId()})}"><p th:text="${'Session ' + s.session.id + ''}" class="ticket-info"></p></a>
                 <p th:text="${s.getSession().movie.name}" class="ticket-info"></p>
                 <p th:text="${s.getSeat().rowNum + '*' + s.getSeat().getColumnNum()}" class="ticket-info"></p>
                 <input type="submit" value="Delete" class="button-ticket">

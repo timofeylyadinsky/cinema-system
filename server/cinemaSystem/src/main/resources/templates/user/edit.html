@@ -6,20 +6,23 @@
     <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
+<main class="main-container">
+<form th:method="PATCH" th:action="@{/update}" th:object="${person}" class="sign-form">
 
-<form th:method="PATCH" th:action="@{/update}" th:object="${person}">
 
-    <input type="hidden" th:field="*{password}"/>
-
-    <label for="username">: Username </label>
-    <input type="text" th:field="*{username}" id="username"/>
-    <br/>
-    <label for="email">email </label>
-    <input type="text" th:field="*{email}" id="email"/>
+    <input type="text" th:field="*{email}" id="email" placeholder="EMAIL"/>
     <br/>
 
+    <!--    <label for="username">: Username </label>-->
+    <input type="text" th:field="*{username}" id="username" placeholder="USERNAME"/>
+    <br/>
 
-    <input type="submit" value="Редактировать!"/>
+    <input type="password" th:field="*{password}"/>
+<!--    <label for="email">email </label>-->
+
+    <button type="submit">EDIT</button>
+<!--    <input type="submit" value="Редактировать!"/>-->
 </form>
+</main>
 </body>
 </html>

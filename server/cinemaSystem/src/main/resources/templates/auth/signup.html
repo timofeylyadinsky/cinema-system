@@ -6,31 +6,33 @@
     <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
-<h1>form</h1>
-<form th:action="@{/auth/signup}" th:object="${person}" th:method="POST">
+<main class="main-container">
+<h1 id="title">SIGN UP</h1>
+<form th:action="@{/auth/signup}" th:object="${person}" th:method="POST" class="sign-form">
 
 
     <div>
-        <label for="email">email</label>
-        <input type="text" th:field="*{email}" id="email"/>
+<!--        <label for="email">email</label>-->
+        <input type="text" th:field="*{email}" id="email" placeholder="EMAIL"/>
         <p th:each="error : ${#fields.errors('email')}"
            th:text="${error}">Validation error</p>
     </div>
-    <label for="username">first</label>
-    <input type="text" th:field="*{username}" id="username"/>
+<!--    <label for="username">first</label>-->
+    <input type="text" th:field="*{username}" id="username" placeholder="USERNAME"/>
     <p th:each="error: ${#fields.errors('username')}"-->
           th:text="${error}">Validation error</p>
     <div>
-        <label for="password">password</label>
-        <input type="password" th:field="*{password}" id="password"/>
+<!--        <label for="password">password</label>-->
+        <input type="password" th:field="*{password}" id="password" placeholder="PASSWORD"/>
         <p th:each="error : ${#fields.errors('password')}"
            th:text="${error}">Validation error</p>
     </div>
     <div>
-        <label for="confirm">confirm</label>
-        <input id="confirm" type="password" th:field="*{confirmPassword}"/>
+<!--        <label for="confirm">confirm</label>-->
+        <input id="confirm" type="password" th:field="*{confirmPassword}" placeholder="CONFIRM PASSWORD"/>
     </div>
-    <button type="submit">submit</button>
+    <button type="submit">SIGN UP</button>
 </form>
+</main>
 </body>
 </html>
