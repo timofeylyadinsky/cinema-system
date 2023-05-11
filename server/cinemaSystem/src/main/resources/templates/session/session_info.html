@@ -22,9 +22,6 @@
 <p th:text="${'Hall ' + sessions.hall.id + sessions.hall.rowsOfSeat + '*' + sessions.hall.columnsOfSeat}" class="session-text"></p>
 <a th:href="@{/movie/{id}(id=${sessions.movie.id})}" class="session-link"><p th:text="${'Movie ' + sessions.getMovie().getName()}" class="session-text"></p></a>
     <p th:text="${'Date ' + sessions.sessionDate}" class="session-text"></p>
-    <!--<div th:each="s : ${seats}">-->
-<!--    <p th:text="${'row' + s.rowNum + ' column' + s.columnNum}"></p>-->
-<!--</div>-->
 <script type="text/javascript" th:src="@{./js/script.js}"></script>
 <form th:action="@{/ticket/booking}" th:object="${seating}" method="post" class="form-selection">
     <select class="form-control custom-select" id="dropDownList" th:field="*{seat}" >

@@ -9,6 +9,7 @@
 <header class="header-container container" id="result">
     <nav class="nav-container">
         <ul class="nav-list">
+            <li><input type="search" onkeyup="searchFunction()" id="search-box" placeholder="Search for movie..."/></li>
             <li><a th:href="@{/movie}" class="nav-link">Movies</a></li>
             <li><a th:href="@{/session}" class="nav-link">Session</a></li>
             <li sec:authorize="isFullyAuthenticated()"><a th:href="@{/profile}" class="nav-link">Profile</a></li>
@@ -28,5 +29,6 @@
     </div>
   </div>
 </main>
+<script type="text/javascript" th:src="@{./js/script.js}"></script>
 </body>
 </html>

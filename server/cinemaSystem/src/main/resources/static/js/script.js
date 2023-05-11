@@ -11,3 +11,20 @@ function startTemplate() {
     //     "    </nav>\n";
 }
 
+function searchFunction() {
+    let input = document.getElementById("search-box");
+    let filter = input.value.toUpperCase();
+    let arr = document.getElementsByClassName("movie-container");
+    for(let i = 0; i < arr.length; i++) {
+        let p = arr[i].getElementsByClassName("movie-title")[0];
+        let txtValue = p.textContent || p.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            arr[i].style.display = "flex";
+        } else {
+            arr[i].style.display = "none";
+        }
+    }
+}
+
+
+document.getElementById("search-box").addEventListener('input', (e)=> {searchFunction()})
