@@ -17,10 +17,18 @@
         </ul>
     </nav>
 </header>
-    <div th:each="s : ${sessions}">
+<main class="main-container">
+    <div th:each="s : ${sessions}" class="movie-container">
         <a th:href="@{/session/{id}(id=${s.getId()})}">
+        <div class="movie-container">
             <p th:text="${s.getId()}"></p>
+
+        <p th:text="${s.movie.getName()}"></p>
+        <p th:text=" 'Hall:' + ${s.hall.id}"></p>
+            <p th:text=" 'Date:' + ${s.sessionDate}"></p>
+        </div>
         </a>
     </div>
+</main>
 </body>
 </html>

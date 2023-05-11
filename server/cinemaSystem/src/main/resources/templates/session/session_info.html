@@ -17,18 +17,23 @@
         </ul>
     </nav>
 </header>
-<p th:text="${'Hall' + sessions.hall.id}"></p>
-<p th:text="${'Movie' + sessions.getMovie().getName()}"></p>
-<!--<div th:each="s : ${seats}">-->
+<main class="main-container">
+    <h1 id="title">Session Info</h1>
+<p th:text="${'Hall ' + sessions.hall.id + sessions.hall.rowsOfSeat + '*' + sessions.hall.columnsOfSeat}" class="session-text"></p>
+<a th:href="@{/movie/{id}(id=${sessions.movie.id})}" class="session-link"><p th:text="${'Movie ' + sessions.getMovie().getName()}" class="session-text"></p></a>
+    <p th:text="${'Date ' + sessions.sessionDate}" class="session-text"></p>
+    <!--<div th:each="s : ${seats}">-->
 <!--    <p th:text="${'row' + s.rowNum + ' column' + s.columnNum}"></p>-->
 <!--</div>-->
-<form th:action="@{/ticket/booking}" th:object="${seating}" method="post">
-    <select class="form-control" id="dropDownList" th:field="*{seat}">
+<script type="text/javascript" th:src="@{./js/script.js}"></script>
+<form th:action="@{/ticket/booking}" th:object="${seating}" method="post" class="form-selection">
+    <select class="form-control custom-select" id="dropDownList" th:field="*{seat}" >
         <option th:each="s : ${seats}" th:value="${s.id}" th:text="${'row' + s.rowNum + '; column' + s.columnNum}" name="seat"></option>
     </select>
     <input type="hidden" name="sessionId" th:value="${sessions.id}" />
-    <input type="submit" value="Login"/>
+    <input type="submit" value="Booking" class="button-user"/>
 </form>
+</main>
 
 </body>
 </html>

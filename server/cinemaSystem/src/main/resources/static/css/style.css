@@ -167,3 +167,36 @@ h2 {
     transition-duration: 0.7s;
     color: #ffffff;
 }
+
+.custom-select {
+    background-color: #0000ff;
+    width: 200px;
+    height: 80px;
+    font-size: 24px;
+}
+
+.form-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border:1px solid #ffffff;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.session-text {
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.session-link {
+    text-decoration: none;
+    animation-duration: 0.7s;
+    color: #ffffff;
+}
+
+.session-link:hover {
+    text-decoration: none;
+    color: #5b5b5b;
+}
