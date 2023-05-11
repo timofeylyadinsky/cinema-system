@@ -105,6 +105,10 @@ public class SessionService {
         return seats;
     }
 
+    public List<Session> getSessionByDate(LocalDate localeDate) {
+        return sessionRepository.getSessionsBySessionDate(localeDate);
+    }
+
     public void delete(Long id) {
         sessionRepository.delete(sessionRepository.getSessionsById(id));
     }
